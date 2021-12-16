@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="database2.xsd"?>
+<!--
+<!DOCTYPE database [
+  <!ELEMENT database (tables?, records?)>
+  <!ELEMENT tables (table+)>
+  <!ELEMENT table (column*)>
+  <!ELEMENT column EMPTY>
+  <!ATTLIST table name CDATA #REQUIRED>
+  <!ATTLIST column
+    name CDATA #REQUIRED
+    primaryKey (true | false) "false"
+    datatype (INTEGER | REAL | TEXT | BLOB | NULL) #REQUIRED
+    foreignKey CDATA #IMPLIED
+  >
+  <!ELEMENT records (record*)>
+  <!ELEMENT record (data*)>
+  <!ELEMENT data (#PCDATA)>
+  <!ATTLIST record
+    table CDATA #REQUIRED
+  >
+  <!ATTLIST data column NMTOKEN #REQUIRED>
+]>
+-->
+<database>
+  <tables>
+    <table name="Users">
+      <column name="ID" datatype="INTEGER" primaryKey="true"/>
+      <column name="userName" datatype="TEXT" />
+      <column name="passwordHash" datatype="TEXT" />
+      <column name="email" datatype="TEXT" />
+      <column name="phone" datatype="TEXT" />
+      <column name="GDPR" datatype="INTEGER" />
+      <column name="roleID" datatype="INTEGER" foreignKey="Role" />
+    </table>
+    <table name="Role">
+      <column name="ID" datatype="INTEGER" />
+      <column name="name" datatype="TEXT" />
+    </table>
+    <table name="Permissions">
+      <column name="ID" datatype="INTEGER" />
+      <column name="name" datatype="TEXT" />
+    </table>
+    <table name="Role_Permissions">
+      <column name="roleID" datatype="INTEGER" />
+      <column name="permissionID" datatype="INTEGER" />
+    </table>
+  </tables>
+  <records>
+    <record table="Users">
+      <data column="ID">0</data>
+      <data column="userName">Josef Novák</data>
+      <data column="password_hash">5bcca117c56a831c0a5b6c14c4bf3b16e10c610ca79f51165e899fd6267639e4333c8a1f973688d7c88b3950f58961d75bc5d4036ded30a10fb6432317abdd8a</data>
+      <data column="email">Josef.Novak@volny.cz</data>
+      <data column="phone">+420754451442</data>
+      <data column="GDPR">1</data>
+      <data column="RoleID">1</data>
+    </record>
+    <record table="Role">
+      <data column="ID">0</data>
+      <data column="name">neznamy</data>
+    </record>
+    <record table="Role">
+      <data column="ID">1</data>
+      <data column="name">uzivatel</data>
+    </record>
+    <record table="Permissions">
+      <data column="ID">0</data>
+      <data column="name">vstup</data>
+    </record>
+    <record table="Permissions">
+      <data column="ID">1</data>
+      <data column="name">vypujcka</data>
+    </record>
+    <record table="Role_Permissions">
+      <data column="roleID">0</data>
+      <data column="PermissionID">0</data>
+    </record>
+    <record table="Role_Permissions">
+      <data column="roleID">1</data>
+      <data column="permissionID">0</data>
+    </record>
+    <record table="Role_Permissions">
+      <data column="roleID">1</data>
+      <data column="permissionID">1</data>
+    </record>
+  </records>
+</database>
