@@ -10,7 +10,7 @@
   <!ATTLIST column
     name CDATA #REQUIRED
     primaryKey (true | false) "false"
-    datatype (INTEGER | REAL | TEXT | BLOB | NULL) #REQUIRED
+    datatype (INTEGER | REAL | TEXT | BLOB ) #REQUIRED
     foreignKey CDATA #IMPLIED
   >
   <!ELEMENT records (record*)>

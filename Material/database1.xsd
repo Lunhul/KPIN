@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Root element -->
+  <xs:element name="database" type="database" />
+
+  <!-- Simple Attributes -->
+  <xs:attribute name="name" type="xs:string" />
+  <xs:attribute name="datatype" type="SQLdatatype" />
+  <xs:attribute name="primaryKey" type="xs:boolean" default="false" />
+  <xs:attribute name="foreignKey" type="xs:string" />
+  <xs:attribute name="column" type="xs:string" />
+  <xs:attribute name="table" type="xs:string" />
+  
+  <!-- Simple Types -->
+  <xs:simpleType name="SQLdatatype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TEXT" />
+      <xs:enumeration value="INTEGER" />
+      <xs:enumeration value="REAL" />
+      <xs:enumeration value="BLOB" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="column">
+    <!-- this makes element "single tag" -->
+    <xs:sequence />
+    <xs:attribute ref="name" use="required" />
+    <xs:attribute ref="datatype" use="required" />
+    <xs:attribute ref="primaryKey" use="optional" />
+    <xs:attribute ref="foreignKey" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="data">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="column" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- Complex Types -->
+  <xs:complexType name="table">
+    <xs:sequence>
+      <xs:element name="column" minOccurs="0" maxOccurs="unbounded" type="column" />
+    </xs:sequence>
+    <xs:attribute ref="name" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="record">
+    <xs:sequence>
+      <xs:element name="data" minOccurs="0" maxOccurs="unbounded" type="data" />
+    </xs:sequence>
+    <xs:attribute ref="table" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="tables">
+    <xs:sequence>
+      <xs:element name="table" minOccurs="1" maxOccurs="unbounded" type="table" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="records">
+    <xs:sequence>
+      <xs:element name="record" minOccurs="0" maxOccurs="unbounded" type="record" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="database">
+    <xs:sequence>
+      <xs:element name="tables" type="tables" />
+      <xs:element name="records" type="records" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
