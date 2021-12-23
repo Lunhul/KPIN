@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="database2.xsd"?>
-<!--
+
 <!DOCTYPE database [
   <!ELEMENT database (tables?, records?)>
   <!ELEMENT tables (table+)>
@@ -21,7 +20,7 @@
   >
   <!ATTLIST data column NMTOKEN #REQUIRED>
 ]>
--->
+
 <database>
   <tables>
     <table name="Users">
