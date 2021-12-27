@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>Studentský dotazník</title>
+</head>
+<body>
+  <form method="post" action="Run.php" style="margin: auto; width: 30%;">
+    <table>
+      <tr>
+        <td>*Osobní číslo:</td>
+        <td><input style="margin-left: 60px;" type="text" name="osobni_cislo" placeholder="st12345" pattern="[Ss][Tt][0-9]{5}"/></td>
+      </tr>
+      <tr>
+        <td>* Příjmení:</td>
+        <td><input style="margin-left: 60px;" type="text" name="prijmeni" placeholder="Novák" pattern="[A-Za-z]*"/></td>
+      </tr>
+      <tr>
+        <td>* Aktuální ročník studia:</td>
+        <td><input style="margin-left: 60px;" type="text" name="rocnik" placeholder="1" pattern="[1-5]{1}"/></td>
+      </tr>
+      <tr>
+        <td>* Počet kreditů:</td>
+        <td><input style="margin-left: 60px;" type="text" name="pocet_kreditu" placeholder="20" pattern="[0-9]{3}"></td>
+      </tr>
+    </table>
+    <p>Vyber jednu z možností:</p>
+    <input type="radio" id="fotbal" name="favourites" value="fotbal" />
+    <label for="fotbal">Koukám rád na fotbal</label><br />
+    <input type="radio" id="hokey" name="favourites" value="hokey" />
+    <label for="hokey">Koukám rád na hokej</label><br />
+    <input type="radio" id="videogames" name="favourites" value="videogames" />
+    <label for="videogames">Hraju rád pc hry</label><br />
+    <input type="radio" id="nothing" name="favourites" value="nothing" />
+    <label for="nothing">Rád lenoším a nic nedělám</label>
+    <p>Vyber jednu z možností:</p>
+    <input type="radio" id="development" name="hobby" value="development" />
+    <label for="development">Rád programuji</label><br />
+    <input type="radio" id="bastling" name="hobby" value="bastling" />
+    <label for="bastling">Rád bastlím s arduinem nebo s raspberry pi</label><br />
+    <input type="radio" id="other" name="hobby" value="other" />
+    <label for="other">Jiné</label>
+    <p>Pohlaví:</p>
+    <input type="radio" id="man" name="sex" value="man" />
+    <label for="man">Muž</label><br />
+    <input type="radio" id="woman" name="sex" value="woman" />
+    <label for="woman">Žena</label><br />
+    <input type="radio" id="other" name="sex" value="other" />
+    <label for="other">Jiné</label>
+    <p>Batman nebo superman:</p>
+    <input type="radio" id="batman" name="hero" value="batman" />
+    <label for="batman">Batman</label><br />
+    <input type="radio" id="superman" name="hero" value="superman" />
+    <label for="superman">Superman</label><br />
+    <p style="font-size: small; color: red;"><i>* Povinné položky</i></p>
+    <input style="margin-top: 15px;" type="submit" value="Submit">
+  </form>
+</body>
+</html>
