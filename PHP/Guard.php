@@ -1,5 +1,4 @@
 <?php
-
 namespace entities;
 
 // trait pro ověřování uživatelských vstupů

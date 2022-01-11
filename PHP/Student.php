@@ -1,10 +1,5 @@
 <?php
-
 namespace entities;
-
-require "Guard.php";
-
-use entities;
 
 class Student {
 

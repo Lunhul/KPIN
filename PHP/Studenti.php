@@ -1,13 +1,8 @@
 <?php
+namespace entities;
 // Konstantní cesta k souboru se zaznamenanými studenty (ve formátu xml)
 define("EXPORT_FILENAME", "export.xml", false);
 
-namespace entities;
-
-require "Guard.php";
-require "Student.php";
-
-use entities;
 use SimpleXML;
 
 class Studenti {
