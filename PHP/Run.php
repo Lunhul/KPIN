@@ -1,5 +1,5 @@
 <?php
-use entities;
+use entities as e;
 
 require "Guard.php";
 require "Student.php";
@@ -13,8 +13,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $rocnik = $_POST['rocnik'];
   $pocet_kreditu = $_POST['pocet_kreditu'];
   if(!empty($osobni_cislo) || !empty($prijmeni) || !empty($rocnik) || !empty($pocet_kreditu)) {
-    $student = new Student($prijmeni, $osobni_cislo, $rocnik, $pocet_kreditu, $_POST['favourites'], $_POST['hobby'], $_POST['sex'], $_POST['hero']);
-    $studenti = new Studenti();
+    $student = new e\Student($prijmeni, $osobni_cislo, $rocnik, $pocet_kreditu, $_POST['favourites'], $_POST['hobby'], $_POST['sex'], $_POST['hero']);
+    $studenti = new e\Studenti();
     if(!file_exists(EXPORT_FILENAME)) {
       $studenti->append($student);
     }
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $studenti->append($student);
     }
     $studenti->export();
-  echo "<div style='width: 100%; background-color: limegreen; height: 50px;'>Děkuji za vyplnění dotazníku!</div>";
+  echo "<div style='width: 100%; background-color: limegreen; height: 50px; padding: 13px;'>Děkuji za vyplnění dotazníku!</div>";
   }
   else {
     echo $err;

@@ -3,8 +3,6 @@ namespace entities;
 // Konstantní cesta k souboru se zaznamenanými studenty (ve formátu xml)
 define("EXPORT_FILENAME", "export.xml", false);
 
-use SimpleXML;
-
 class Studenti {
 
   use Guard;
@@ -31,14 +29,14 @@ class Studenti {
 
   // Metoda pro export do souboru (na konstantní cestě)
   public function export() {
-    $xml = new SimpleXMLElement("<?xml version='1.0' encoding='UTF-8'?><Studenti/>");
+    $xml = new \SimpleXMLElement("<?xml version='1.0' encoding='UTF-8'?><Studenti/>");
     foreach($this->_studenti as $student) {
       $st = $xml->addChild("Student");
       foreach($student->export() as $attribute => $value) {
         $st->addChild($attribute, $value);
       }
     }
-    $xml.asXML(EXPORT_FILENAME);
+    $xml->asXML(EXPORT_FILENAME);
   }
 
   // Metoda pro import studentů z xml souboru (struktura je shodná s exportovanou strukturou)
