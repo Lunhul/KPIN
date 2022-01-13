@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $studenti->append($student);
     }
     $studenti->export();
-  echo "<div style='width: 100%; background-color: limegreen; height: 50px; padding: 13px;'>Děkuji za vyplnění dotazníku!</div>";
+  echo "<div style='background-color: limegreen; padding: 25px 0; text-align: center;'>Děkuji za vyplnění dotazníku!</div>";
   }
   else {
     echo $err;
